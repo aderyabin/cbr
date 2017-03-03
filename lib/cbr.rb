@@ -26,7 +26,7 @@ module CBR
     def dynamic(char_code, from_date, to_date)
       currency_id = daily[char_code].id
 
-      xml_data = Net::HTTP.get(URI("www.cbr.ru/scripts/XML_dynamic.asp?date_req1=#{format_date(from_date)}&date_req2=#{format_date(to_date)}&VAL_NM_RQ=#{currency_id.strip}"))
+      xml_data = Net::HTTP.get(URI("http://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=#{format_date(from_date)}&date_req2=#{format_date(to_date)}&VAL_NM_RQ=#{currency_id.strip}"))
 
       Dynamic::Core.parse(xml_data).val_curs
     end
